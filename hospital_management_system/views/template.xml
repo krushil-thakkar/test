@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="clinic_page" name="Hospitals">
+         <t t-call="website.layout">
+             <div class="oe_structure">
+               <div class="container">
+                 <br/>
+                 <center><h1><b>Hospital Details</b></h1></center>
+                 <br/>
+                   <table class="table-striped table">
+                     <thead style="font-size: 23px;">
+                     <tr>
+                       <h6>
+                         <b>
+                           <th>Name</th>
+                           <th>Address</th>
+                           <th>Contact No</th>
+                         </b>
+                       </h6>
+                     </tr>
+                     </thead>
+                     <tbody>
+                       <t t-foreach="my_details" t-as="clinic">
+                       <tr>
+                       <td><span t-esc="clinic.name"/></td>
+                       <td><span t-esc="clinic.address"/></td>
+                       <td><span t-esc="clinic.mobile_no"/></td>
+                       </tr>
+                       </t>
+                     </tbody>
+                   </table>
+               </div>
+            </div>
+         </t>
+    </template>
+
+    <template id="doctor_page" name="Doctors">
+         <t t-call="website.layout">
+             <div class="oe_structure">
+               <div class="container">
+                 <br/>
+                 <center><h1><b>Doctor Details</b></h1></center>
+                 <br/>
+                   <table class="table-striped table">
+                     <thead style="font-size: 23px;">
+                     <tr>
+                       <h6>
+                         <b>
+                           <th>Name</th>
+                           <th>Address</th>
+                           <th>Contact No</th>
+                         </b>
+                       </h6>
+                     </tr>
+                     </thead>
+                     <tbody>
+                       <t t-foreach="my_details" t-as="doctor">
+                       <tr>
+                           <td><span t-esc="doctor.name"/></td>
+                           <td><span t-esc="doctor.specializations"/></td>
+                           <td><span t-esc="doctor.mobile_no"/></td>
+                       </tr>
+                       </t>
+                     </tbody>
+                   </table>
+               </div>
+            </div>
+         </t>
+    </template>
+
+    <template id="patient_page" name="Patients">
+         <t t-call="website.layout">
+             <div class="oe_structure">
+               <div class="container">
+                 <br/>
+                 <center><h1><b>Patient Details</b></h1></center>
+                 <br/>
+                   <table class="table-striped table">
+                     <thead style="font-size: 23px;">
+                     <tr>
+                       <h6>
+                         <b>
+                           <th>Name</th>
+                           <th>gender</th>
+                           <th>Marital Status</th>
+                         </b>
+                       </h6>
+                     </tr>
+                     </thead>
+                     <tbody>
+                       <t t-foreach="my_details" t-as="patient">
+                       <tr>
+                            <td><span t-esc="patient.name"/></td>
+                           <td><span t-esc="patient.gender"/></td>
+                           <td><span t-esc="patient.marital_status"/></td>
+                       </tr>
+                       </t>
+                     </tbody>
+                   </table>
+               </div>
+            </div>
+         </t>
+    </template>
+
+    <template id="prescription_page" name="Doctors">
+         <t t-call="website.layout">
+             <div class="oe_structure">
+               <div class="container">
+                 <br/>
+                 <center><h1><b>Prescription Details</b></h1></center>
+                 <br/>
+                   <table class="table-striped table">
+                     <thead style="font-size: 23px;">
+                     <tr>
+                       <h6>
+                         <b>
+                           <th>Name</th>
+                           <th>Total Prescription</th>
+                           <th>Start date</th>
+                         </b>
+                       </h6>
+                     </tr>
+                     </thead>
+                     <tbody>
+                       <t t-foreach="my_details" t-as="prescription">
+                       <tr>
+                           <td><span t-esc="prescription.name"/></td>
+                           <td><span t-esc="prescription.total_prescription"/></td>
+                           <td><span t-esc="prescription.date_start"/></td>
+                       </tr>
+                       </t>
+                     </tbody>
+                   </table>
+               </div>
+            </div>
+         </t>
+    </template>
+
+
+</odoo>

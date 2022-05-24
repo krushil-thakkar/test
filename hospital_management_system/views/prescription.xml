@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+<!--    Tree view-->
+    <record id="prescription_management_tree_view" model="ir.ui.view">
+        <field name="name">prescription.tree.view</field>
+        <field name="model">prescription.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id"/>
+                <field name="clinics_id"/>
+                <field name="doctor_id"/>
+                <field name="medicine_name"/>
+                <field name="dose"/>
+                <field name="qty"/>
+<!--                <field name="dose_timing"/>-->
+            </tree>
+        </field>
+    </record>
+
+<!--    Form view-->
+    <record id="prescription_management_form_view" model="ir.ui.view">
+        <field name="name">prescription.form.view</field>
+        <field name="model">prescription.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="clinics_id" options="{'no_open':True,'no_create':True}" />
+                        <field name="doctor_id" options="{'no_open':True,'no_create':True}" />
+                        <field name="medicine_name"/>
+                        <field name="dose"/>
+                        <field name="qty"/>
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+<!--                        <field name="dose_timing" widget="radio" options="{'horizontal': true}" />-->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--    Kanban view-->
+    <record id="prescription_management_kanban_view" model="ir.ui.view">
+        <field name="name">prescription.kanban.view</field>
+        <field name="model">prescription.management</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                        <t t-name="kanban-box" >
+                            <div t-attf-class="oe_kanban_global_click">
+                                <group>
+                                <strong style="font-size:15px;">Patient Name:</strong>
+                                     <field name="patient_id"/>
+                                <br/>
+                                <strong>Clinic:</strong>
+                                    <field name="clinics_id"/>
+                                <br/>
+                                <strong>Doctor:</strong>
+                                    <field name="doctor_id"/>
+                                <br/>
+                                <strong>Medicine Name:</strong>
+                                    <field name="medicine_name"/>
+                                <br/>
+                                </group>
+                            </div>
+                        </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+<!--    Graph view    -->
+    <record model="ir.ui.view" id="prescription_management_graph_view">
+       <field name="name">prescription.management.graph.view</field>
+       <field name="model">prescription.management</field>
+       <field name="arch" type="xml">
+             <graph string="Graph View">
+                 <field name="clinics_id"/>
+                 <field name="patient_id" />
+                 <field name="medicine_name"/>
+            </graph>
+        </field>
+    </record>
+
+<!--    Action-->
+    <record id="action_prescription_management" model="ir.actions.act_window">
+        <field name="name">Prescription management</field>
+        <field name="res_model">prescription.management</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
+                <field name="domain">[]</field>
+                <field name="help" type="html">
+                    <p class="oe_view_no_content_create">Create New prescription</p>
+                </field>
+    </record>
+
+<!--    Menu-->
+    <menuitem id="prescription_management"
+              name="Prescription"
+              parent="clinic_menu"
+              action="action_prescription_management"/>
+
+</odoo>

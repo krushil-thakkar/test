@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+<!--    Tree view    -->
+    <record id="patient_management_tree_view" model="ir.ui.view">
+        <field name="name">patient.tree.view</field>
+        <field name="model">patient.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="street" string="Address"/>
+                <field name="age" />
+                <field name="image"/>
+                <field name="gender"/>
+                <field name="patient_id"/>
+                <field name="doctor_id" domain="[('clinic_id','=',clinics_id)]"/>
+                <field name="marital_status"/>
+                <field name="mobile_no"/>
+                <field name="blood_group"/>
+                <field name="clinics_id"/>
+                <field name="medicine_name"/>
+                <field name="dose"/>
+                <field name="qty"/>
+                <field name="duration_period"/>
+            </tree>
+        </field>
+    </record>
+
+<!--    Search view    -->
+    <record id="patient_management_search_view" model="ir.ui.view">
+        <field name="name">patient.search.view</field>
+        <field name="model">patient.management</field>
+        <field name="arch" type="xml">
+            <search string="search">
+                <field name="name"/>
+                <field name="mobile_no"/>
+                <field name="email"/>
+                <filter string="Male" domain="[('gender', '=', 'male')]" name="student_gender"/>
+                <filter string="Female" domain="[('gender', '=', 'female')]" name="student_gender"/>
+                <filter string="Married" domain="[('marital_status', '=', 'married')]" name="marital_status"/>
+                <filter string="Unmarried" domain="[('marital_status', '=', 'unmarried')]" name="marital_status"/>
+                <group expand="1">
+                    <filter string="Gender" name="gender" context="{'group_by':'gender'}"/>
+                    <filter string="Clinic" name="clinic" context="{'group_by':'clinics_id'}"/>
+                    <filter string="Marital status" name="marital_status" context="{'group_by':'marital_status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+<!--    Action for Inherit Prescription    -->
+    <record id="action_inherit_patient_management" model="ir.actions.act_window">
+        <field name="name">patient management</field>
+        <field name="res_model">prescription.management</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('patient_id','=',active_id)]</field>
+        <field name="help" type="html">
+              <p class="oe_view_no_content_create">Create New Patient</p>
+        </field>
+    </record>
+
+<!--    Form view    -->
+    <record id="patient_management_form_view" model="ir.ui.view">
+        <field name="name">patient.form.view</field>
+        <field name="model">patient.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <button name="action_url" class="btn-primary" type="object" string="action"/>
+                <div class="oe_button_box" name="button_box">
+<!--                    <button class="oe_stat_button" type="object" name="get_action_school" icon="fa-male">-->
+<!--                        <field string="Total invoices" name="total_invoices" widget="statinfo"/>-->
+<!--                    </button>-->
+                    <button class="oe_stat_button" type="action" name="%(hospital_management_system.action_inherit_patient_management)d" icon="fa-male">
+                        <field string="Total Prescription" name="total_prescription" widget="statinfo"/>
+                    </button>
+                </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="active"/>
+                            <field name="street" string="Address" />
+                            <field name="age" />
+                            <field name="image"/>
+                            <field name="patient_id"/>
+                            <field name="gender"/>
+                            <field name="mobile_no"/>
+                            <field name="marital_status"/>
+                        </group>
+                        <group>
+                            <field name="blood_group"/>
+                            <field name="clinics_id" options="{'no_open':True,'no_create':True}"/>
+                            <field name="doctor_id" domain="[('clinic_id','=',clinics_id)]" options="{'no_open':True,'no_create':True}"/>
+                            <field name="medicine_name"/>
+                            <field name="dose"/>
+                            <field name="qty"/>
+                            <field name="qty"/>
+                            <field name="duration_period"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="comment"/>
+                    </group>
+                    <notebook>
+                        <page string="Prescription">
+                            <field name="patient_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--    Kanban view    -->
+    <record id="Patient_management_kanban_view" model="ir.ui.view">
+        <field name="name">patient.kanban.view</field>
+        <field name="model">patient.management</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                        <t t-name="kanban-box" >
+                            <div t-attf-class="oe_kanban_global_click">
+                                <group>
+                                <strong style="font-size:15px;">Name:</strong>
+                                     <field name="name"/>
+                                <br/>
+                                <strong>Address:</strong>
+                                    <field name="street"/>
+                                <br/>
+                                <strong>Gender:</strong>
+                                    <field name="gender"/>
+                                <br/>
+                                <strong>Doctor:</strong>
+                                    <field name="doctor_id"/>
+                                <br/>
+                                </group>
+                            </div>
+                        </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+<!--    Calendar view    -->
+    <record id="patient_management_calendar_view" model="ir.ui.view">
+        <field name="name">patient.management.calendar.view</field>
+        <field name="model">patient.management</field>
+        <field name="arch" type="xml">
+            <calendar date_start="duration_period" date_stop="duration_period" event_open_popup="true" mode="month">
+                <field name="name"/>
+                <field name="duration_period"/>
+                <field name="street"/>
+            </calendar>
+        </field>
+    </record>
+
+<!--    Graph view    -->
+    <record model="ir.ui.view" id="patient_management_graph_view">
+       <field name="name">patient.management.graph.view</field>
+       <field name="model">patient.management</field>
+       <field name="arch" type="xml">
+             <graph string="Graph View">
+                  <field name="name"/>
+                  <field name="clinics_id" group="True"/>
+                  <field name="doctor_id" group="True"/>
+                  <field name="gender"/>
+            </graph>
+        </field>
+    </record>
+
+<!--    Action    -->
+    <record id="action_patient_management" model="ir.actions.act_window">
+        <field name="name">Patient management</field>
+        <field name="res_model">patient.management</field>
+        <field name="view_mode">tree,form,kanban,calendar,graph</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_no_content_create">Create New Patient</p>
+            </field>
+    </record>
+
+<!--    Menu    -->
+    <menuitem id="patient_management"
+              name="Patient"
+              parent="clinic_menu"
+              action="action_patient_management"/>
+
+</odoo>

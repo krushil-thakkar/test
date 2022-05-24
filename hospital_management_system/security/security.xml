@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="module_manage" model="ir.module.category">
+        <field name="name">Demo module</field>
+        <field name="sequence">3</field>
+    </record>
+
+    <record id="doctor_group" model="res.groups">
+        <field name="name">Doctor</field>
+        <field name="category_id" ref="hospital_management_system.module_manage"/>
+    </record>
+
+    <record id="management_group" model="res.groups">
+        <field name="name">Management</field>
+        <field name="category_id" ref="hospital_management_system.module_manage"/>
+    </record>
+
+<!--    For Doctors-->
+    <record id="see_his_own_doctor" model="ir.rule">
+        <field name="name">Doctors</field>
+        <field name="model_id" ref="model_doctor_management"/>
+        <field name="domain_force">[('user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4,ref('doctor_group'))]"/>
+        <field name = "perm_read" eval = "1" />
+        <field name = "perm_write" eval = "1" />
+        <field name = "perm_create" eval = "0" />
+        <field name = "perm_unlink" eval = "0" />
+    </record>
+
+<!--    For Management-->
+    <record id="see_all" model="ir.rule">
+        <field name="name">Management</field>
+        <field name="model_id" ref="model_doctor_management"/>
+        <field name="domain_force">[('user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4,ref('management_group'))]"/>
+        <field name = "perm_read" eval = "1" />
+        <field name = "perm_write" eval = "1" />
+        <field name = "perm_create" eval = "0" />
+        <field name = "perm_unlink" eval = "0" />
+    </record>
+</odoo>

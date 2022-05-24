@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+<!--    Form view-->
+    <record id="create_doctor_wizard_form_view" model="ir.ui.view">
+        <field name="name">wizard.form.view</field>
+        <field name="model">create.doctor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="specializations"/>
+                    </group>
+                    <button name="action_done" string="Create" class="btn-primary mr-2" type="object"/>
+                    <button string="Cancel" name="cancel_button" type="object"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--    Action-->
+    <record id="create_doctor_wizard_action" model="ir.actions.act_window">
+        <field name="name">Create Doctor</field>
+        <field name="res_model">create.doctor</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_doctor_wizard_form_view"/>
+        <field name="target">new</field>
+        <field name="help" type="html">
+            <p class="oe_view_no_content_create">Create New Doctor</p>
+        </field>x
+    </record>
+
+<!--    Menu-->
+    <menuitem id="doctor_wizard_management"
+              name="Create Doctor"
+              parent="clinic_menu"
+              action="create_doctor_wizard_action"/>
+
+
+
+
+
+</odoo>

@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_doctor2_management,doctor_management,model_doctor_management,hospital_management_system.management_group,1,1,0,0
+access_doctor1_management,doctor_management,model_doctor_management,hospital_management_system.doctor_group,1,1,0,0
+access_doctor_management,doctor_management,model_doctor_management,base.group_user,1,1,1,1
+access_create_doctor,create_doctor,model_create_doctor,base.group_user,1,1,1,1
+access_clinic_management,clinic_management,model_clinic_management,base.group_user,1,1,1,1
+access_patient_management,patient_management,model_patient_management,base.group_user,1,1,1,1
+access_prescription_management,prescription_management,model_prescription_management,base.group_user,1,1,1,1
+access_prescription_report_wizard,prescription_report_wizard,model_prescription_report_wizard,base.group_user,1,1,1,1

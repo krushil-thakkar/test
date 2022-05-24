@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+<!--    Tree view-->
+    <record id="doctor_management_tree_view" model="ir.ui.view">
+        <field name="name">doctor.tree.view</field>
+        <field name="model">doctor.management</field>
+        <field name="arch" type="xml">
+            <tree expand="1">
+                <field name="name"/>
+                <field name="specializations" />
+                <field name="gender" />
+                <field name="mobile_no"/>
+                <field name="email"/>
+                <field name="set_priority"/>
+                <field name="clinic_id" />
+                <field name="user_id"/>
+            </tree>
+        </field>
+    </record>
+
+<!--    Search view-->
+    <record id="doctor_management_search_view" model="ir.ui.view">
+        <field name="name">doctor.search.view</field>
+        <field name="model">doctor.management</field>
+        <field name="arch" type="xml">
+            <search string="search">
+                <field name="name"/>
+                <field name="mobile_no"/>
+                <field name="email"/>
+                <group expand="1">
+                    <filter string="Gender" name="gender" context="{'group_by':'gender'}"/>
+                    <filter string="Clinic" name="clinic" context="{'group_by':'clinic_id'}"/>
+                </group>
+                <searchpanel>
+                    <field name="gender" string="Gender" enable_counters="1"/>
+                    <field name="clinic_id" string="Clinic" enable_counters="1"/>
+                    <field name="user_id" string="Users" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+<!--  Form view  -->
+    <record id="doctor_management_form_view" model="ir.ui.view">
+        <field name="name">doctor.form.view</field>
+        <field name="model">doctor.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                        <field name="specializations" />
+                        <field name="gender" widget="radio" options="{'horizontal':True}"/>
+                        <field name="mobile_no" widget="phone"/>
+                        <field name="email" widget="email"/>
+                        <field name="set_priority" widget="priority"/>
+                        <field name="clinic_id" options="{'no_open':True,'no_create':True}"/>
+                        <field name="user_id"/>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" groups="base.group_user"/>
+                        <field name="message_ids"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--    Kanban view-->
+    <record id="doctor_management_kanban_view" model="ir.ui.view">
+        <field name="name">doctor.kanban.view</field>
+        <field name="model">doctor.management</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                        <t t-name="kanban-box" >
+                            <div t-attf-class="oe_kanban_global_click">
+                                <group>
+                                <strong style="font-size:15px;">Name:</strong>
+                                     <field name="name"/>
+                                <br/>
+                                <strong>Specialization:</strong>
+                                    <field name="specializations"/>
+                                <br/>
+                                <strong>Mobile No:</strong>
+                                    <field name="mobile_no"/>
+                                <br/>
+                                <strong>Priority:</strong>
+                                    <field name="set_priority"/>
+                                <br/>
+                                </group>
+                            </div>
+                        </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+<!--    Graph view    -->
+    <record model="ir.ui.view" id="doctor_management_graph_view">
+       <field name="name">doctor.management.graph.view</field>
+       <field name="model">doctor.management</field>
+       <field name="arch" type="xml">
+             <graph string="Graph View">
+                 <field name="clinic_id"/>
+                 <field name="specializations" />
+                 <field name="name"/>
+            </graph>
+        </field>
+    </record>
+
+
+<!--    Action-->
+    <record id="action_doctor_management" model="ir.actions.act_window">
+        <field name="name">Doctor management</field>
+        <field name="res_model">doctor.management</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
+                <field name="domain">[]</field>
+                <field name="help" type="html">
+                    <p class="oe_view_no_content_create">Create New Doctor</p>
+                </field>
+    </record>
+
+
+<!--    Menu-->
+    <menuitem id="doctor_management"
+              name="Doctor"
+              parent="clinic_menu"
+              action="action_doctor_management"/>
+
+</odoo>

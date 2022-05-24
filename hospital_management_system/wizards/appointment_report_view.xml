@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+<!--    Form view-->
+    <record id="prescription_management_form_view1" model="ir.ui.view">
+        <field name="name">prescription.report.wizard.form.view</field>
+        <field name="model">prescription.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id"/>
+                        </group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                    </group>
+                    <button name="action_print_report" type="object" string="Print b" class="btn-primary" style="padding-right:10px;"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--    Action-->
+    <record id="appointment_report_wizard_form" model="ir.actions.act_window">
+        <field name="name">prescription</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">prescription.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="hospital_management_system.prescription_management_form_view1"/>
+        <field name="target">new</field>
+    </record>
+
+<!--    Menu-->
+    <menuitem id="menu_reporting"
+              name="Reporting"
+              parent="clinic_menu"
+              action="hospital_management_system.appointment_report_wizard_form"/>
+
+</odoo>

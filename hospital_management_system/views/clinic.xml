@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+<!--    tree view-->
+    <record id="clinic_management_tree_view" model="ir.ui.view">
+        <field name="name">clinic.tree.view</field>
+        <field name="model">clinic.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="address" />
+                <field name="mobile_no" />
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+<!--    form view-->
+    <record id="clinic_management_form_view" model="ir.ui.view">
+        <field name="name">clinic.form.view</field>
+        <field name="model">clinic.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="address" />
+                        <field name="mobile_no" widget="phone" />
+                        <field name="email" widget="email"/>
+                    </group>
+                    <notebook>
+                        <page string='Doctors'>
+                            <field name="clinic_ids"/>
+                        </page>
+                        <page string="Patients">
+                            <field name="patient_ids"/>
+                        </page>
+                        <page string="Prescription">
+                            <field name="patient_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!--    Kanban view-->
+    <record id="clinic_management_kanban_view" model="ir.ui.view">
+        <field name="name">clinic.kanban.view</field>
+        <field name="model">clinic.management</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                        <t t-name="kanban-box" >
+                            <div t-attf-class="oe_kanban_global_click">
+                                <group>
+                                <strong style="font-size:15px;">Name:</strong>
+                                     <field name="name"/>
+                                <br/>
+                                <strong>Address:</strong>
+                                    <field name="address"/>
+                                <br/>
+                                <strong>Mobile No:</strong>
+                                    <field name="mobile_no"/>
+                                <br/>
+                                <strong>Email:</strong>
+                                    <field name="email"/>
+                                <br/>
+                                </group>
+                            </div>
+                        </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+<!--Graph view    -->
+    <record model="ir.ui.view" id="clinic_management_graph_view">
+       <field name="name">clinic.management.graph.view</field>
+       <field name="model">clinic.management</field>
+       <field name="arch" type="xml">
+             <graph string="Graph View">
+                  <field name="name"/>
+            </graph>
+        </field>
+    </record>
+
+<!--    action-->
+    <record id="action_clinic_management" model="ir.actions.act_window">
+        <field name="name">Clinic management</field>
+        <field name="res_model">clinic.management</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
+                <field name="domain">[]</field>
+                <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">Create New Clinic</p>
+                </field>
+    </record>
+
+<!--    menu-->
+    <menuitem id="clinic_menu" name="Hospital management"/>
+    <menuitem id="clinic_management"
+              name="Clinic"
+              parent="clinic_menu"
+              action="action_clinic_management"/>
+
+</odoo>
