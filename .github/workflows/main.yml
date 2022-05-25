@@ -14,4 +14,4 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
       - name: Test
-        run: python3 home/st22122104/projects/odoo/server14/odoo-bin -c /home/st22122104/projects/odoo/config/odoo14_new.conf  
+        run: python3 /home/st22122104/projects/odoo/server14/odoo-bin -c /home/st22122104/projects/odoo/config/odoo14_new.conf  
