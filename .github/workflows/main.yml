@@ -19,4 +19,4 @@ jobs:
           
       - uses: actions/checkout@v3
       - name: Test
-        run: python3 ./home/st22122104/projects/odoo/server14/odoo-bin
+        run: python3 ../projects/odoo/server14/odoo-bin
