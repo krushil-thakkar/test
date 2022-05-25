@@ -17,6 +17,4 @@ jobs:
 
 
       - name: Test
-        run:
-          python3 -m pip install -r requirements.txt
-          python3 odoo-bin
+        run: python3 setup.py
