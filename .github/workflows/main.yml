@@ -17,10 +17,7 @@ jobs:
 
         
       - name: Test
-        run: source /home/st22122104/projects/odoo15/venv/bin/activate
-        
-      - name: Install dependencies
-        run: pip install -U Pillow
+        run: source /home/st22122104/projects/odoo9TS/odoo_IT/bin/activate
     
       - name: Odoo
-        run: python3.8 /home/st22122104/projects/odoo15/odoo/odoo-bin -c /home/st22122104/projects/odoo15/config/odoo15.conf
+        run: python2.7 /home/st22122104/projects/odoo9TS/odoo-9-ce-bundle/source/openerp-server -c /home/st22122104/projects/odoo9TS/conf/odoov9_CE_OIT.conf
