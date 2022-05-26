@@ -19,7 +19,7 @@ jobs:
       - name: Test
         run: source /home/st22122104/projects/odoo15/odoo/ser15/bin/activate
       - name: Install requirements
-        run: python3.8 -m pip install pypdf2
-             python3.8 -m pip install pillow
+        run: python3.8 -m pip install -r requirements.txt
+            
       - name: ODOO
         run: python3.8 /home/st22122104/projects/odoo15/odoo/odoo-bin -c /home/st22122104/projects/odoo15/config/odoo15.conf
