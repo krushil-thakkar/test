@@ -17,4 +17,4 @@ jobs:
 
         
       - name: Test
-        run: source ser15/bin/activate
+        run: source /home/st22122104/projects/odoo/server15/ser15/bin/activate
