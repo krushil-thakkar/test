@@ -20,7 +20,7 @@ jobs:
         run: source /home/st22122104/projects/odoo15/odoo15venv/bin/activate
   
       - name: Requirements
-        run: python3.9 -m pip install --upgrade urllib3
+        run: python3.9 -m pip install libsass
   
       - name: Odoo
         run: python3.9 /home/st22122104/projects/odoo15/odoo/odoo-bin -c /home/st22122104/projects/odoo15/config/odoo15.conf
