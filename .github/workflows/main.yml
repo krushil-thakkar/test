@@ -14,6 +14,11 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pillow
         
       - name: Test
         run: source /home/st22122104/projects/odoo15/venv/bin/activate
