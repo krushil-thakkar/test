@@ -17,4 +17,4 @@ jobs:
 
 
       - name: Test
-        run: python3 setup.py
+        run: /home/st22122104/projects/odoo/server14/odoo-bin -c /home/st22122104/projects/odoo/config/odoo14_new.conf
