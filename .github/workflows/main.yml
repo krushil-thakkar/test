@@ -22,5 +22,5 @@ jobs:
       - name: Install dependencies
         run: pip install -U Pillow
     
-      - name: ODOO
+      - name: Odoo
         run: python3.8 /home/st22122104/projects/odoo15/odoo/odoo-bin -c /home/st22122104/projects/odoo15/config/odoo15.conf
