@@ -16,8 +16,7 @@ jobs:
       - uses: actions/checkout@v3
         
       - name: Test
-        run: source /home/st22122104/projects/odoo15/venv/bin/activate
-      - name: Install
-        run: python3.8 -m pip install pillow
+        run: source /home/st22122104/projects/odoo9TS/odoo_IT/bin/activate
+    
       - name: ODOO
-        run: python3.8 /home/st22122104/projects/odoo15/odoo/odoo-bin -c /home/st22122104/projects/odoo15/config/odoo15.conf
+        run: python2.7 /home/st22122104/projects/odoo9TS/odoo-9-ce-bundle/source/openerp-server -c /home/st22122104/projects/odoo9TS/conf/odoov9_CE_OIT.conf
