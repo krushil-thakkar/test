@@ -20,7 +20,7 @@ jobs:
         run: source /home/st22122104/projects/odoo15/odoo15venv/bin/activate
   
       - name: requirements
-        run: python3.9 -m pip install requirements.txt
+        run: python3.9 -m pip install -r requirements.txt
   
       - name: Odoo
         run: python3.9 /home/st22122104/projects/odoo15/odoo/odoo-bin -c /home/st22122104/projects/odoo15/config/odoo15.conf
