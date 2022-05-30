@@ -18,6 +18,12 @@ jobs:
         
       - name: Test
         run: source /home/st22122104/projects/odoo15/odoo15venv/bin/activate
+        
+      - name: Requirements
+        run: pip3 install -r /home/st22122104/projects/odoo15/odoo/requirements.txt
   
+  
+- name: Requirements
+  run: pip3 install -r /home/st22122104/projects/odoo15/odoo/requirements.txt
       - name: Odoo
         run: python3.9 /home/st22122104/projects/odoo15/odoo/odoo-bin -c /home/st22122104/projects/odoo15/config/odoo15.conf
