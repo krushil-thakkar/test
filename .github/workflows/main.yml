@@ -25,12 +25,12 @@ jobs:
       - name: Requiremen
         run: echo $(python <<EOF
               import sys
-                if sys.prefix == sys.base_prefix:
+              if sys.prefix == sys.base_prefix:
                   print("No, you are not in a virtual environment.")
-                else:
+              else:
                    print("Yes, you are in a virtual environment.")
-                EOF
-                )
+              EOF
+              )
         
       - name: Requireme
         run: pip install --upgrade setuptools
