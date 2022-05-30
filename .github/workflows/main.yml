@@ -17,7 +17,7 @@ jobs:
 
         
       - name: Test
-        run: python -m venv /home/st22122104/github/venv/bin/activate
+        run: python3.9 -m venv /home/st22122104/github/venv/bin/activate
     
       - name: Odoo
         run: python3.9 /home/st22122104/projects/odoo15/odoo/odoo-bin -c /home/st22122104/projects/odoo15/config/odoo15.conf
